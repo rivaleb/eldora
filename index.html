@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#101a1c" />
+  <meta name="description" content="Eldoria: The Last Survivor — 2D fantasy survival adventure." />
+  <title>Eldoria: The Last Survivor</title>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><div><strong>ELDORIA</strong><small>THE LAST SURVIVOR</small></div></div>
+      <div class="top-actions">
+        <span id="world-clock">DAY 1 · 08:00</span>
+        <button id="save-btn" class="small-btn" title="Save game">Save</button>
+        <button id="help-btn" class="small-btn" title="Controls">?</button>
+      </div>
+    </header>
+    <main class="layout">
+      <section class="game-panel">
+        <div class="canvas-wrap">
+          <canvas id="game" width="960" height="600" aria-label="Eldoria game world"></canvas>
+          <div class="toast" id="toast" aria-live="polite"></div>
+          <div class="game-over hidden" id="game-over">
+            <div class="modal-card"><p class="eyebrow">YOUR JOURNEY ENDS</p><h1>Lost in Eldoria</h1><p>You survived <b id="days-survived">1</b> day(s).</p><button id="restart-btn" class="primary-btn">Start a new journey</button></div>
+          </div>
+          <div class="help-overlay hidden" id="help-overlay">
+            <div class="modal-card">
+              <button class="close-btn" id="close-help">×</button><p class="eyebrow">FIELD GUIDE</p><h2>How to survive</h2>
+              <p><b>Desktop:</b> WASD / Arrow keys to move, Space to attack, E to gather, F to eat, C to craft.</p>
+              <p><b>Mobile:</b> Use the movement pad and action buttons below the world.</p>
+              <p>Gather resources during the day. Slimes become more dangerous at night. Keep hunger above zero and build a campfire for safety.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-controls">
+          <div class="dpad">
+            <button data-move="up" aria-label="Move up">▲</button>
+            <div><button data-move="left" aria-label="Move left">◀</button><button data-move="down" aria-label="Move down">▼</button><button data-move="right" aria-label="Move right">▶</button></div>
+          </div>
+          <div class="mobile-actions">
+            <button data-action="attack">⚔<small>Attack</small></button>
+            <button data-action="gather">✋<small>Gather</small></button>
+            <button data-action="eat">🍓<small>Eat</small></button>
+          </div>
+        </div>
+      </section>
+      <aside class="sidebar">
+        <section class="card player-card">
+          <div class="section-heading"><h2>Survivor</h2><span class="level-pill">LVL 1</span></div>
+          <div class="stat"><div><span>❤️ Health</span><b id="health-value">100 / 100</b></div><div class="bar"><i id="health-bar" class="health-fill"></i></div></div>
+          <div class="stat"><div><span>🍖 Hunger</span><b id="hunger-value">100 / 100</b></div><div class="bar"><i id="hunger-bar" class="hunger-fill"></i></div></div>
+          <div class="stat"><div><span>⚡ Stamina</span><b id="stamina-value">100 / 100</b></div><div class="bar"><i id="stamina-bar" class="stamina-fill"></i></div></div>
+        </section>
+        <section class="card">
+          <div class="section-heading"><h2>Inventory</h2><span class="muted" id="inventory-count">0 / 24</span></div>
+          <div class="inventory-grid" id="inventory"></div>
+          <p class="hint">Select an item to inspect it.</p>
+          <div id="item-detail" class="item-detail">No item selected.</div>
+        </section>
+        <section class="card">
+          <div class="section-heading"><h2>Crafting</h2><span class="muted">Workbench</span></div>
+          <div id="recipes" class="recipes"></div>
+        </section>
+        <section class="card quest-card">
+          <div class="section-heading"><h2>Field Journal</h2><span class="quest-dot"></span></div>
+          <p id="objective">Gather 5 wood and 3 stone to prepare for nightfall.</p>
+          <div class="objective-progress"><i id="objective-progress"></i></div>
+          <p class="hint" id="world-tip">Tip: Approach a resource and press E to gather it.</p>
+        </section>
+      </aside>
+    </main>
+    <footer><span>ELDORIA v1.0</span><span>Explore · Gather · Craft · Survive</span><span>Autosave: local device</span></footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
